@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Sekolah</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-image: url('https://image.shutterstock.com/image-vector/illustration-vector-graphic-islamic-background-250nw-2350626635.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #ffffff
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+      color: #ffffff;
+    }
+
+    form {
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(25, 135, 84, 1);
+      box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: hsl(0, 0%, 100%);
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: hsl(216, 100%, 50%);
+      outline: none;
+    }
+
+    button {
+      background-color: hsl(216, 100%, 50%);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+      font-size: 16px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .spinner {
+      display: none;
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(0, 0, 0, 0.1);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Data Sekolah</h1>
+
+  <h2>Data Seluruh Kelas</h2>
+  <form id="formKelas">
+    <label for="kelas">Kelas:</label>
+    <select id="kelas" name="kelas" required>
+      <option value="I">I</option>
+      <option value="II">II</option>
+      <option value="III">III</option>
+      <option value="IV">IV</option>
+      <option value="V">V</option>
+      <option value="VI">VI</option>
+    </select>
+
+    <label for="perempuan">Perempuan:</label>
+    <input type="number" id="perempuan" name="perempuan" min="0" required>
+
+    <label for="laki_laki">Laki-laki:</label>
+    <input type="number" id="laki_laki" name="laki_laki" min="0" required>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Data Mutasi Masuk</h2>
+  <form id="formMutasiMasuk">
+    <label for="nama_mutasi_masuk">Nama:</label>
+    <input type="text" id="nama_mutasi_masuk" name="nama_mutasi_masuk" required>
+
+    <label for="asal_sekolah_mutasi_masuk">Asal Sekolah:</label>
+    <input type="text" id="asal_sekolah_mutasi_masuk" name="asal_sekolah_mutasi_masuk" required>
+
+    <label for="kelas_mutasi_masuk">Diterima di Kelas:</label>
+    <select id="kelas_mutasi_masuk" name="kelas_mutasi_masuk" required>
+      <option value="I">I</option>
+      <option value="II">II</option>
+      <option value="III">III</option>
+      <option value="IV">IV</option>
+      <option value="V">V</option>
+      <option value="VI">VI</option>
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Data Mutasi Keluar</h2>
+  <form id="formMutasiKeluar">
+    <label for="nama_mutasi_keluar">Nama:</label>
+    <input type="text" id="nama_mutasi_keluar" name="nama_mutasi_keluar" required>
+
+    <label for="kelas_mutasi_keluar">Kelas:</label>
+    <select id="kelas_mutasi_keluar" name="kelas_mutasi_keluar" required>
+      <option value="I">I</option>
+      <option value="II">II</option>
+      <option value="III">III</option>
+      <option value="IV">IV</option>
+      <option value="V">V</option>
+      <option value="VI">VI</option>
+    </select>
+
+    <label for="alamat_sekolah_tujuan_mutasi_keluar">Alamat Sekolah Tujuan:</label>
+    <input type="text" id="alamat_sekolah_tujuan_mutasi_keluar" name="alamat_sekolah_tujuan_mutasi_keluar" required>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Data Penanganan Kasus</h2>
+  <form id="formKasus">
+    <label for="no_kasus">No:</label>
+    <input type="number" id="no_kasus" name="no_kasus" min="1" required>
+
+    <label for="kelas_kasus">Kelas:</label>
+    <select id="kelas_kasus" name="kelas_kasus" required>
+      <option value="I">I</option>
+      <option value="II">II</option>
+      <option value="III">III</option>
+      <option value="IV">IV</option>
+      <option value="V">V</option>
+      <option value="VI">VI</option>
+    </select>
+
+    <label for="nama_kasus">Nama:</label>
+    <input type="text" id="nama_kasus" name="nama_kasus" required>
+
+    <label for="nis_nisn_kasus">NIS/NISN:</label>
+    <input type="text" id="nis_nisn_kasus" name="nis_nisn_kasus" required>
+
+    <label for="kasus">Kasus:</label>
+    <textarea id="kasus" name="kasus" rows="4" required></textarea>
+
+    <label for="penanganan_kasus">Penanganan:</label>
+    <textarea id="penanganan_kasus" name="penanganan_kasus" rows="4" required></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+  <div id="loadingSpinner" class="spinner"></div>
+
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Mencegah pengiriman form langsung
+      document.getElementById('loadingSpinner').style.display = 'block'; // Menampilkan spinner
+
+      var formData = new FormData(this);
+      var queryString = new URLSearchParams(formData).toString();
+
+      fetch('https://script.google.com/macros/s/AKfycbxVpQgv3jGxelBbGxDDzzQhmt9dd_gJWTp5jJzxHHG3duXP0grMAvifm4BFu8h4KEe90Q/exec' + queryString, {
+        method: 'GET',
+      })
+        .then(response => response.text())
+        .then(result => {
+          document.getElementById('loadingSpinner').style.display = 'none'; // Menyembunyikan spinner
+          alert(result); // Menampilkan respon dari server
+          window.location.reload(); // Menyegarkan halaman
+        })
+        .catch(error => {
+          document.getElementById('loadingSpinner').style.display = 'none'; // Menyembunyikan spinner
+          console.error('Error:', error);
+        });
+    });
+  </script>
+</body>
+
+</html>
