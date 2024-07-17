@@ -17,8 +17,7 @@
       color: #ffffff
     }
 
-    h1,
-    h2 {
+    h1, h2 {
       text-align: center;
       color: #ffffff;
     }
@@ -40,9 +39,7 @@
       color: hsl(0, 0%, 100%);
     }
 
-    input,
-    textarea,
-    select {
+    input, textarea, select {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -52,9 +49,7 @@
       font-size: 16px;
     }
 
-    input:focus,
-    textarea:focus,
-    select:focus {
+    input:focus, textarea:focus, select:focus {
       border-color: hsl(216, 100%, 50%);
       outline: none;
     }
@@ -84,8 +79,7 @@
       overflow: hidden;
     }
 
-    th,
-    td {
+    th, td {
       border: 1px solid #ddd;
       padding: 12px;
       text-align: left;
@@ -225,26 +219,28 @@
   <div id="loadingSpinner" class="spinner"></div>
 
   <script>
-    document.getElementById('myForm').addEventListener('submit', function (event) {
-      event.preventDefault(); // Mencegah pengiriman form langsung
-      document.getElementById('loadingSpinner').style.display = 'block'; // Menampilkan spinner
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Mencegah pengiriman form langsung
+        document.getElementById('loadingSpinner').style.display = 'block'; // Menampilkan spinner
 
-      var formData = new FormData(this);
-      var queryString = new URLSearchParams(formData).toString();
+        var formData = new FormData(this);
+        var queryString = new URLSearchParams(formData).toString();
 
-      fetch('https://script.google.com/macros/s/AKfycbxVpQgv3jGxelBbGxDDzzQhmt9dd_gJWTp5jJzxHHG3duXP0grMAvifm4BFu8h4KEe90Q/exec' + queryString, {
-        method: 'GET',
-      })
-        .then(response => response.text())
-        .then(result => {
-          document.getElementById('loadingSpinner').style.display = 'none'; // Menyembunyikan spinner
-          alert(result); // Menampilkan respon dari server
-          window.location.reload(); // Menyegarkan halaman
+        fetch('https://script.google.com/macros/s/AKfycbxVpQgv3jGxelBbGxDDzzQhmt9dd_gJWTp5jJzxHHG3duXP0grMAvifm4BFu8h4KEe90Q/exec?' + queryString, {
+          method: 'GET',
         })
-        .catch(error => {
-          document.getElementById('loadingSpinner').style.display = 'none'; // Menyembunyikan spinner
-          console.error('Error:', error);
-        });
+          .then(response => response.text())
+          .then(result => {
+            document.getElementById('loadingSpinner').style.display = 'none'; // Menyembunyikan spinner
+            alert(result); // Menampilkan respon dari server
+            window.location.reload(); // Menyegarkan halaman
+          })
+          .catch(error => {
+            document.getElementById('loadingSpinner').style.display = 'none'; // Menyembunyikan spinner
+            console.error('Error:', error);
+          });
+      });
     });
   </script>
 </body>
